@@ -100,49 +100,7 @@ public class UploadPostService {
         }).collect(Collectors.toList());
     }
 
-    /// this Below Method in thi swe get comments while fetch uploaded post
-
-//
-//    public List<UploadPostResponseDTO> getUploadPostsByCategoryName(String categoryName, Long userId) {
-//        List<UploadPost> posts = uploadPostRepo.findByFedCategory_NameIgnoreCase(categoryName);
-//
-//        return posts.stream().map(post -> {
-//            UploadPostResponseDTO dto = new UploadPostResponseDTO();
-//            dto.setId(post.getId());
-//            dto.setImageUrl(post.getImageUrl());
-//            dto.setContent(post.getContent());
-//
-//            dto.setTags(post.getTags() != null ? Arrays.asList(post.getTags().split(",")) : Collections.emptyList());
-//
-//            dto.setUploadedById(post.getUser().getId());
-//            dto.setUploadedBy(post.getUser().getFirstName() + " " + post.getUser().getLastName());
-//            dto.setCategoryName(post.getFedCategory().getName());
-//            dto.setUploadedAt(post.getUploadedAt());
-//
-//            //  Like count and user liked check
-//            dto.setTotalLikes(likeRepo.countByPostId(post.getId()));
-//            boolean liked = likeRepo.existsByPostIdAndUserId(post.getId(), userId);
-//            dto.setLiked(liked);
-//
-//            //  Comments
-//            List<Comment> comments = commentRepo.findByPostId(post.getId());
-//            dto.setTotalComments(comments.size());
-//
-//            List<CommentResponseDTO> commentDTOs = comments.stream().map(comment -> {
-//                CommentResponseDTO cDto = new CommentResponseDTO();
-//                cDto.setCommentId(comment.getId());
-//                cDto.setText(comment.getText());
-//                cDto.setCommentedAt(comment.getCommentedAt());
-//                cDto.setCommenterName(comment.getUser().getFirstName() + " " + comment.getUser().getLastName());
-//                cDto.setCommenterId(comment.getUser().getId());
-//                return cDto;
-//            }).collect(Collectors.toList());
-//
-//            dto.setComments(commentDTOs);
-//
-//            return dto;
-//        }).collect(Collectors.toList());
-//    }
+  =
 
 
 
@@ -176,91 +134,7 @@ public class UploadPostService {
 
 
 
-    // Method that fetches comments reoplies and apost alll by catgeory
-    //
-//    public List<UploadPostResponseDTO> getUploadPostsByCategoryName(String categoryName, Long userId) {
-//        List<UploadPost> posts = uploadPostRepo.findByFedCategory_NameIgnoreCase(categoryName);
-//
-//        return posts.stream().map(post -> {
-//            UploadPostResponseDTO dto = new UploadPostResponseDTO();
-//            dto.setId(post.getId());
-//            dto.setImageUrl(post.getImageUrl());
-//            dto.setContent(post.getContent());
-//
-//            dto.setTags(post.getTags() != null ? Arrays.asList(post.getTags().split(",")) : Collections.emptyList());
-//
-//            dto.setUploadedById(post.getUser().getId());
-//            dto.setUploadedBy(post.getUser().getFirstName() + " " + post.getUser().getLastName());
-//            dto.setCategoryName(post.getFedCategory().getName());
-//            dto.setUploadedAt(post.getUploadedAt());
-//
-//            // Likes
-//            dto.setTotalLikes(likeRepo.countByPostId(post.getId()));
-//            dto.setLiked(likeRepo.existsByPostIdAndUserId(post.getId(), userId));
-//
-//            // Comments
-//            List<Comment> comments = commentRepo.findByPostId(post.getId());
-//            dto.setTotalComments(comments.size());
-//
-//            List<CommentResponseDTO> commentDTOs = comments.stream().map(comment -> {
-//                CommentResponseDTO cDto = new CommentResponseDTO();
-//                cDto.setCommentId(comment.getId());
-//                cDto.setText(comment.getText());
-//                cDto.setCommentedAt(comment.getCommentedAt());
-//                cDto.setCommenterName(comment.getUser().getFirstName() + " " + comment.getUser().getLastName());
-//                cDto.setCommenterId(comment.getUser().getId());
-//
-//                // Replies (safe fallback to empty list)
-//                List<Comment> replies = commentRepo.findByParentComment(comment);
-//                List<ReplyResponseDTO> replyDTOs = replies != null ? replies.stream().map(reply -> {
-//                    ReplyResponseDTO rDto = new ReplyResponseDTO();
-//                    rDto.setText(reply.getText());
-//                    rDto.setCommentedAt(reply.getCommentedAt());
-//                    rDto.setCommenterName(reply.getUser().getFirstName() + " " + reply.getUser().getLastName());
-//                    rDto.setCommenterId(reply.getUser().getId());
-//                    rDto.setReplyId(reply.getId());
-//                    return rDto;
-//                }).collect(Collectors.toList()) : new ArrayList<>();
-//
-//                cDto.setReplies(replyDTOs); // Set replies list (never null)
-//                return cDto;
-//            }).collect(Collectors.toList());
-//
-//            dto.setComments(commentDTOs);
-//            return dto;
-//        }).collect(Collectors.toList());
-//    }
-//
-
-
-//    public LikeResponseDTO likePost(Long postId, Long userId) {
-//        UploadPost post = uploadPostRepo.findById(postId)
-//                .orElseThrow(() -> new RuntimeException("Post not found"));
-//        User user = userRepository.findById(userId)
-//                .orElseThrow(() -> new RuntimeException("User not found"));
-//
-//        Optional<Like> existingLike = likeRepo.findByPostIdAndUserId(postId, userId);
-//
-//        boolean liked;
-//        if (existingLike.isPresent()) {
-//            likeRepo.delete(existingLike.get());
-//            post.setTotalLikes(post.getTotalLikes() - 1); //  decrement
-//            liked = false;
-//        } else {
-//            Like like = new Like();
-//            like.setPost(post);
-//            like.setUser(user);
-//            likeRepo.save(like);
-//            post.setTotalLikes(post.getTotalLikes() + 1); //  increment
-//            liked = true;
-//        }
-//
-//        uploadPostRepo.save(post); // Save updated like count
-//
-//        return new LikeResponseDTO(postId, post.getTotalLikes(), liked);
-//    }
-
-
+    =
 
     public LikeResponseDTO likePost(Long postId, Long userId) {
         UploadPost post = uploadPostRepo.findById(postId)
@@ -304,20 +178,6 @@ public class UploadPostService {
     }
 
 
-//    public String addComment(Long postId, Long userId, String text) {
-//        UploadPost post = uploadPostRepo.findById(postId)
-//                .orElseThrow(() -> new RuntimeException("Post not found"));
-//        User user = userRepository.findById(userId)
-//                .orElseThrow(() -> new RuntimeException("User not found"));
-//        Comment comment = new Comment();
-//        comment.setPost(post);
-//        comment.setUser(user);
-//        comment.setText(text);
-//        commentRepo.save(comment);
-//
-//        return "Comment added successfully";
-//    }
-//
 
 
 
@@ -348,50 +208,7 @@ public class UploadPostService {
     }
 
 
-//
-//    public PostWithCommentsDTO getPostWithComments(Long postId) {
-//        UploadPost post = uploadPostRepo.findById(postId)
-//                .orElseThrow(() -> new RuntimeException("Post not found"));
-//
-//        List<Comment> comments = commentRepo.findByPostId(postId);
-//
-//        PostWithCommentsDTO dto = new PostWithCommentsDTO();
-//        dto.setPostId(post.getId());
-//        dto.setImageUrl(post.getImageUrl());
-//        dto.setContent(post.getContent());
-//        dto.setTags(Arrays.asList(post.getTags().split(",")));
-//        dto.setUploadedBy(post.getUser().getFirstName() + " " + post.getUser().getLastName());
-//        dto.setCategoryName(post.getFedCategory().getName());
-//        dto.setUploadedAt(post.getUploadedAt());
-//
-//        List<CommentDTO> commentDTOs = comments.stream()
-//                .filter(comment -> comment.getParentComment() == null) // Only top-level comments
-//                .map(comment -> {
-//                    CommentDTO cDto = new CommentDTO();
-//                    cDto.setText(comment.getText());
-//                    cDto.setCommentedAt(comment.getCommentedAt());
-//                    cDto.setCommenterName(comment.getUser().getFirstName() + " " + comment.getUser().getLastName());
-//
-//                    // Map replies
-//                    List<ReplyDTO> replyDTOs = comment.getReplies().stream().map(reply -> {
-//                        ReplyDTO rDto = new ReplyDTO();
-//                        rDto.setReplyId(reply.getId());
-//                        rDto.setText(reply.getText());
-//                        rDto.setCommentedAt(reply.getCommentedAt());
-//                        rDto.setCommenterName(reply.getUser().getFirstName() + " " + reply.getUser().getLastName());
-//                        return rDto;
-//                    }).collect(Collectors.toList());
-//
-//                    cDto.setReplies(replyDTOs);
-//                    return cDto;
-//                }).collect(Collectors.toList());
-//
-//        dto.setComments(commentDTOs);
-//        return dto;
-//    }
-//
 
-    //  Above code is wroking perfectly withpout replies nested
 
 
     public PostWithCommentsDTO getPostWithComments(Long postId) {
@@ -472,68 +289,10 @@ public class UploadPostService {
         dto.setCommentedAt(comment.getCommentedAt());
         dto.setCommenterName(comment.getUser().getFirstName() + " " + comment.getUser().getLastName());
 
-        //
+        
         commentRepo.delete(comment);
         return dto;
     }
-
-
-//
-//    public ReplyDTO replyToComment(Long parentCommentId, Long userId, String text) {
-//        Comment parent = commentRepo.findById(parentCommentId)
-//                .orElseThrow(() -> new RuntimeException("Parent comment not found"));
-//
-//        User user = userRepository.findById(userId)
-//                .orElseThrow(() -> new RuntimeException("User not found"));
-//
-//        Comment reply = new Comment();
-//        reply.setText(text);
-//        reply.setCommentedAt(LocalDateTime.now());
-//        reply.setUser(user);
-//        reply.setPost(parent.getPost());
-//        reply.setParentComment(parent);
-//
-//        commentRepo.save(reply);
-//
-//        // Build DTO
-//        ReplyDTO dto = new ReplyDTO();
-//        dto.setText(reply.getText());
-//        dto.setCommentedAt(reply.getCommentedAt());
-//        dto.setCommenterName(user.getFirstName() + " " + user.getLastName());
-//
-//        // WebSocket push
-//        messagingTemplate.convertAndSend("/topic/replies/" + parentCommentId, dto);
-//
-//        return dto;
-//    }
-
-
-//    public ReplyDTO replyToComment(Long parentCommentId, Long userId, String text) {
-//        Comment parent = commentRepo.findById(parentCommentId)
-//                .orElseThrow(() -> new RuntimeException("Parent comment not found"));
-//
-//        User user = userRepository.findById(userId)
-//                .orElseThrow(() -> new RuntimeException("User not found"));
-//
-//        Comment reply = new Comment();
-//        reply.setText(text);
-//        reply.setCommentedAt(LocalDateTime.now());
-//        reply.setUser(user);
-//        reply.setPost(parent.getPost());  // Important to inherit post
-//        reply.setParentComment(parent);
-//
-//        commentRepo.save(reply);
-//
-//        ReplyDTO dto = new ReplyDTO();
-//        dto.setText(reply.getText());
-//        dto.setCommentedAt(reply.getCommentedAt());
-//        dto.setCommenterName(user.getFirstName() + " " + user.getLastName());
-//
-//        // WebSocket or response broadcast
-//        messagingTemplate.convertAndSend("/topic/replies/" + parentCommentId, dto);
-//
-//        return dto;
-//    }
 
 
 
@@ -548,7 +307,7 @@ public class UploadPostService {
         reply.setText(text);
         reply.setUser(user);
         reply.setParentComment(parentComment);
-        reply.setPost(parentComment.getPost()); // Same post
+        reply.setPost(parentComment.getPost()); 
         reply.setCommentedAt(LocalDateTime.now());
 
         Comment saved = commentRepo.save(reply);
