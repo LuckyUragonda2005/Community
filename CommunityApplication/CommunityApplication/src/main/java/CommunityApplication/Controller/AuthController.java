@@ -41,22 +41,7 @@ public class AuthController {
     @Autowired
     private  UserRepository userRepository;
 
-//    @PostMapping("/register")
-//    public ResponseEntity<String> register(@RequestBody User user) {
-//        if (userRepo.existsByPhoneNumber(user.getPhoneNumber())) {
-//            return ResponseEntity
-//                    .status(HttpStatus.CONFLICT) // 409 Conflict
-//                    .body("Phone number already exists!");
-//        }
-//
-//        user.setPassword(encoder.encode(user.getPassword()));
-//        user.setRole("USER");
-//        userRepo.save(user);
-//
-//        return ResponseEntity
-//                .status(HttpStatus.CREATED) // 201 Created
-//                .body("User registered successfully!");
-//    }
+
 
     @PostMapping("/register")
     public ResponseEntity<RegisterApiResponse> register(@RequestBody User user) {
@@ -79,46 +64,7 @@ public class AuthController {
                 .body(new RegisterApiResponse(true, "User registered successfully!!!"));
     }
 
-  //    @PostMapping("/login")
-//    public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) {
-//        String phoneNumber = loginRequest.getPhoneNumber();
-//        authManager.authenticate(
-//                new UsernamePasswordAuthenticationToken(
-//                        phoneNumber,
-//                        loginRequest.getPassword()
-//                )
-//        );
-//        UserDetails userDetails = userDetailsService.loadUserByUsername(phoneNumber);
-//        String token = jwtService.generateToken(userDetails.getUsername());
-//        return ResponseEntity.ok(token);
-//    }
-
-
-
-//    @PostMapping("/login")
-//    public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) {
-//        if (loginRequest.getPhoneNumber() == null || loginRequest.getPhoneNumber().isBlank() ||
-//                loginRequest.getPassword() == null || loginRequest.getPassword().isBlank()) {
-//            return ResponseEntity
-//                    .status(HttpStatus.BAD_REQUEST)
-//                    .body("Phone number and password must not be empty!!!");
-//        }
-//        try {
-//            authManager.authenticate(
-//                    new UsernamePasswordAuthenticationToken(
-//                            loginRequest.getPhoneNumber(),
-//                            loginRequest.getPassword()
-//                    )
-//            );
-//        } catch (BadCredentialsException ex) {
-//            return ResponseEntity
-//                    .status(HttpStatus.UNAUTHORIZED)  //401
-//                    .body("Invalid phone number or password!!!");
-//        }
-//        UserDetails userDetails = userDetailsService.loadUserByUsername(loginRequest.getPhoneNumber());
-//        String token = jwtService.generateToken(userDetails.getUsername());
-//        return ResponseEntity.ok(token);
-//    }
+ 
 
 
 
