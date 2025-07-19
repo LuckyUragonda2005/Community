@@ -66,22 +66,7 @@ public class UserController {
     }
 
 
-//    @GetMapping("/filter")
-//    public List<UserResponse> filterUsers(
-//            @RequestParam @NotBlank(message = "Gender is required") String gender,
-//            @RequestParam @NotBlank(message = "Marital Status is required") String maritalStatus,
-//            @RequestParam @NotNull(message = "ageFrom is required") @Min(value = 0, message = "ageFrom must be >= 0") Integer ageFrom,
-//            @RequestParam @NotNull(message = "ageTo is required") @Min(value = 0, message = "ageTo must be >= 0") Integer ageTo
-//    ) {
-//        List<UserResponse> filteredUsers = userService.filterUsers(gender, maritalStatus, ageFrom, ageTo);
-//
-//        if (filteredUsers.isEmpty()) {
-//            throw new NoMatchFoundException("No matches found for the given filters.");
-//        }
-//
-//        return filteredUsers;
-//    }
-//
+
 
 
     @GetMapping("/filter")
@@ -138,14 +123,6 @@ public class UserController {
 
 
 
-//    @GetMapping("/getUploaded-post/{categoryName}")
-//    public ResponseEntity<List<UploadPostResponseDTO>> getUploadedPostsByCategoryName(
-//            @PathVariable String categoryName) {
-//
-//        List<UploadPostResponseDTO> posts = uploadPostService.getUploadPostsByCategoryName(categoryName);
-//        return ResponseEntity.ok(posts);
-//    }
-//
 
 
     @GetMapping("/getUploaded-post/{categoryName}")
@@ -161,26 +138,6 @@ public class UserController {
 
 
 
-    // API for like and Unlike
-//    @PostMapping("/like/{postId}")
-//    public ResponseEntity<String> likePost(@PathVariable Long postId, @RequestParam Long userId) {
-//        return ResponseEntity.ok(uploadPostService.likePost(postId, userId));
-//    }
-//
-//
-//    // get number of like by post
-//    @GetMapping("/likes/{postId}")
-//    public ResponseEntity<Long> getLikeCount(@PathVariable Long postId) {
-//        return ResponseEntity.ok(uploadPostService.getLikeCount(postId));
-//    }
-//
-//    // add Comments on Each Posted
-//    @PostMapping("/comment/{postId}")
-//    public ResponseEntity<String> addComment(@PathVariable Long postId,
-//                                             @RequestParam Long userId,
-//                                             @RequestParam String text) {
-//        return ResponseEntity.ok(uploadPostService.addComment(postId, userId, text));
-//    }
 
 
 
@@ -205,11 +162,6 @@ public class UserController {
     }
 
 
-//    @PostMapping("/comment/{postId}")
-//    public ResponseEntity<String> addComment(@PathVariable Long postId,
-//                                             @RequestBody CommentRequestDTO dto) {
-//        return ResponseEntity.ok(uploadPostService.addComment(postId, dto.getUserId(), dto.getText()));
-//    }
 
 
     @PostMapping("/comment/{postId}")
@@ -237,13 +189,6 @@ public class UserController {
     }
 
 
-    // Delete Comments BY CommentID
-//    @DeleteMapping("/comment/{commentId}")
-//    public ResponseEntity<CommentApiResponseDTO<CommentResponseDTO>> deleteComment(@PathVariable Long commentId) {
-//        CommentResponseDTO deletedComment = uploadPostService.deleteComment(commentId);
-//        CommentApiResponseDTO<CommentResponseDTO> response = new CommentApiResponseDTO<>("Comment deleted", deletedComment);
-//        return ResponseEntity.ok(response);
-//    }
 
 
     @DeleteMapping("/comment/{commentId}")
@@ -266,17 +211,6 @@ public class UserController {
 
         return ResponseEntity.ok(response);
     }
-
-//    @PostMapping("/reply/{commentId}")
-//    public ResponseEntity<String> replyToComment(@PathVariable Long commentId, @RequestBody CommentRequestDTO dto) {
-//        return ResponseEntity.ok(uploadPostService.replyToComment(commentId, dto.getUserId(), dto.getText()));
-//    }
-//    @PostMapping("/reply/{commentId}")
-//    public ResponseEntity<ReplyDTO> replyToComment(@PathVariable Long commentId, @RequestBody CommentRequestDTO dto) {
-//        ReplyDTO replyDTO = uploadPostService.replyToComment(commentId, dto.getUserId(), dto.getText());
-//        return ResponseEntity.ok(replyDTO);
-//    }
-//
 
 
     @PostMapping("/reply/{commentId}")
